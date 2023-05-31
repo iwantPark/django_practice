@@ -1,11 +1,16 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from todo.models import TodoList
 
-# Create your views here.
+
 from django.shortcuts import render
 from todo.models import TodoList
 
-# Create your views here.
+#완료기능 추가
+def complete_todo(request, pk):
+    curTodo = get_object_or_404(TodoList, pk=pk)
+    curTodo.complete = True
+    curTodo.save()
+    return redirect('todos')
 
 def delete_todo(request, pk):
 	delTodo = get_object_or_404(TodoList, pk=pk)
