@@ -1,7 +1,9 @@
 from django.urls import path
+from accounts import views
 from todo.views import create_todo, delete_todo, index, todos, update_todo, complete_todo
 
 urlpatterns = [
+    # path('', views.Todos, name="todo_list"),
 	path('', todos, name="todos"),
 	path('index/', index),
 	path('create_todo/', create_todo, name="create"),

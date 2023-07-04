@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    <h2>Sign Up (로그아웃)</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% comment %} <p>
+            <label for="{{ form.email.id_for_label }}">Email:</label>
+            {{ form.email }}
+        </p>
+        <p>
+            <label for="{{ form.password1.id_for_label }}">Password:</label>
+            {{ form.password1 }}
+        </p>
+        <p>
+            <label for="{{ form.password2.id_for_label }}">Password confirmation:</label>
+            {{ form.password2 }}
+        </p>
+        <p>
+            <label for="{{ form.nickname.id_for_label }}">Nickname:</label>
+            {{ form.nickname }}
+        </p> {% endcomment %}
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>

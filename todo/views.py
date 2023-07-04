@@ -1,8 +1,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
+import todo
 from todo.models import TodoList
-
-
 from django.shortcuts import render
+from django.views.generic import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from todo.models import TodoList
 
 #완료기능 추가
@@ -47,6 +48,11 @@ def create_todo(request):
 		request,
 		'todo/todo_create.html'
 	)
+
+class TodoCreate(LoginRequiredMixin, CreateView): #LoginRequiredMixin을 사용하였기 때문에
+    model = todo	#로그인이 필요함. 하지만 로그인 되지 않았다면
+    fields = ['todo', 'description', 'important'] #login_url로 이동하도록 함.
+    login_url = '/accounts/signin/' #기본 설정은 다르게 되어있어서 직접 지정해주어야 함
 
 def todos(request):
 	todolist = TodoList.objects.all()
